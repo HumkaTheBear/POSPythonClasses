@@ -1,0 +1,37 @@
+import sqlite3
+
+conn = sqlite3.connect('mydatabase')
+c = conn.cursor()
+
+c.execute('pragma foreign_keys=ON')
+
+c.execute('DROP TABLE ItemList')
+c.execute('DROP TABLE OrderHistory')
+
+
+c.execute('CREATE TABLE ItemList (ID Integer primary key autoincrement, '
+          'ItemName text, ItemPrice real, QtyRemaining integer)')
+
+c.execute('CREATE TABLE OrderHistory (ID Integer primary key autoincrement, '
+          'ItemID integer, TotalSale integer, foreign key(ItemID) REFERENCES ItemList(ID))')
+
+c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
+          '("Coffee", 4500, 100)')
+c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
+          '("Onion Bagel", 3500, 100)')
+c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
+          '("Plain Bagel", 3000, 100)')
+c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
+          '("Cream", 0, 100)')
+c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
+          '("Cream Cheese", 0, 100)')
+c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
+          '("Sugar", 0, 100)')
+
+
+
+c.execute('SELECT * FROM ItemList')
+print(c.fetchall())
+
+c.execute('SELECT * FROM OrderHistory')
+print(c.fetchall())
