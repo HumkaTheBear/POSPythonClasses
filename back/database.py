@@ -22,11 +22,11 @@ c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
 c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
           '("Plain Bagel", 3000, 100)')
 c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
-          '("Cream", 0, 100)')
+          '("Cream Cheese", 100, 100)')
 c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
-          '("Cream Cheese", 0, 100)')
+          '("Salad", 5000, 100)')
 c.execute('INSERT INTO ItemList (ItemName, ItemPrice, QtyRemaining) VALUES'
-          '("Sugar", 0, 100)')
+          '("Banana Juice", 2500, 100)')
 
 
 
@@ -35,3 +35,5 @@ print(c.fetchall())
 
 c.execute('SELECT * FROM OrderHistory')
 print(c.fetchall())
+
+conn.commit()
