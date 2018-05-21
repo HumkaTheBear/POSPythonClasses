@@ -14,20 +14,21 @@ def checkout(Current_Order):
     input("Press enter to continue...")
 
 def closeapp():
+    ApplicationTools.updateinventory(ItemList)
     exit()
 
 while True:
     print("Select your order")
     for i in ItemList:
         print(i)
-    print("7 Check Out")
-    print("8 Exit")
+    print("101 Check Out")
+    print("102 Exit")
     selection = int(input()) - 1
 
-    if selection == 6:
+    if selection == 100:
         checkout(Current_Order)
         Current_Order = []
-    elif selection == 7:
+    elif selection == 101:
         closeapp()
     else:
         qty = int(input("How many?"))
